@@ -1,4 +1,4 @@
-//#include "oledHue.h"
+
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
@@ -28,32 +28,6 @@ void setup() {
 }
 
 
-
-
-void loop() {
-  digitalWrite(trigpin, LOW);
-  delay(2);
-  digitalWrite(trigpin,HIGH);
-  delay(10);
-  digitalWrite(trigpin, LOW);
-  duration = pulseIn(echopin, HIGH);
-  distance = duration*0.034/2/2.54; // converts cm to inches
-  Serial.printf("Distance %0.1f inches \n",distance);
-  if(distance <= 3){ // when within 10 in, turns on led 
-    welcomeInfo(); 
-  }
-  else {
-  }
-  if(distance>10){
-   hueinfo();
-  }
-  else {
-    //display.clearDisplay(); // returns blank screen after leaving 10 inches away from sensor
-    //display.display();
-    
-  }
-
-}
 void welcomeInfo(){
   int rot = 2;// sample display to be temp,humidity,time
   display.clearDisplay();
@@ -73,4 +47,31 @@ void hueinfo(){
   display.printf("hue info");
   display.display();
   display.setRotation(rot);
+}
+
+void displayMenus(){
+  digitalWrite(trigpin, LOW);
+  delay(2);
+  digitalWrite(trigpin,HIGH);
+  delay(10);
+  digitalWrite(trigpin, LOW);
+  duration = pulseIn(echopin, HIGH);
+  distance = duration*0.034/2/2.54; // converts cm to inches
+  Serial.printf("Distance %0.1f inches \n",distance);
+  if(distance <= 3){ // when within 10 in, turns on led 
+    welcomeInfo(); // bme info 
+  }
+  else {
+  }
+  if(distance>10){
+   hueinfo();
+  }
+  else {}
+    //display.clearDisplay(); // returns blank screen after leaving 10 inches away from sensor
+    //display.display();
+
+}
+
+void loop() {
+  displayMenus(); 
 }
