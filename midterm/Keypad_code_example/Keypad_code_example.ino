@@ -12,7 +12,7 @@ char hexaKeys[ROWS][COLS] = {
 };
 
 byte rowPins[ROWS] = {14, 15, 16, 17};
-byte colPins[COLS] = {18, 19, 20 , 21};
+byte colPins[COLS] = {20, 21, 22 , 23};
 Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
 
 void setup(){

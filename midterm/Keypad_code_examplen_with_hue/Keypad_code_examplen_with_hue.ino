@@ -29,7 +29,7 @@ char hexaKeys[ROWS][COLS] = {
 };
 
 byte rowPins[ROWS] = {14, 15, 16, 17};
-byte colPins[COLS] = {18, 19, 20 , 21};
+byte colPins[COLS] = {20, 21, 22 , 23};
 Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
 
 void setup() {
@@ -58,23 +58,21 @@ void loop() {
   distance = duration * 0.034 / 2 / 2.54; // converts cm to inches
   Serial.printf("Distance %0.1f inches \n", distance);
   if (distance <= 3) {
-    welcomeInfo();
+    welcomeInfo();// bme280 info
   }
   else {}
-  if (distance >3){
-    hueinfo();
-  }
-  else{
-  }
-}
-//  if (customKey == 0x31) {
-//    setHue(1, true, HueBlue, 255, 0);
-//    if(setHue(1,true,HueBlue,255,0)){
-//      hue_1();
-//    }
-//    else{}
-//
+//  if (distance >3){
+//    hueinfo(); // will replace with actual hue status 
 //  }
+//  else{
+//  }
+
+  if (customKey == 0x31) {
+    //setHue(1, true, HueBlue, 255, 0);
+    hue_1();
+    }
+   else {}
+}
 //  else {}
 //
 //
@@ -146,23 +144,25 @@ void welcomeInfo(void) {
   display.setRotation(rot);
 }
 
-void hue_1() {
+void hue_1(void) {
   int rot = 2;// sample display to be temp,humidity,time
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0, 0);
+  display.setRotation(rot);
   display.printf("Hue 1");
   display.display();
-  display.setRotation(rot);
+  
 }
-void hueinfo(){
+void hueinfo(void){
   int rot = 2;// sample display to be replaced which hue lights are on
+  display.setRotation(rot);
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0,0);
   display.printf("hue info");
   display.display();
-  display.setRotation(rot);
+  
 }
