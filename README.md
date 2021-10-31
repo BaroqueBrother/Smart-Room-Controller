@@ -1,21 +1,19 @@
-# Smart-Room-Controller
+# Cubby Cube
 
-# Smart Room Cotroller 
+# Cubby Cube 
 
-## overview
+## Overview
 
-the purpose of this project is to create a radio transmission communication device.
+This device allows the user to control Phillips Hue Light bulbs from the touchpad installed on the Cube.
+the user may also use the keypad to turn On/Off small home appliances by cennecting to Wemo switches. A small OLED Screen displays each key function on the cube 
 
 ## details 
 
 the device will use the following components:
 
-ethernet port
-bme 280
-
-the project will be completed 
-
-1. fggdfgdf
-1. 
-1. rfreafr
-1. frfer
+1. Ethernet port
+1. Bme 280
+1. OLED Display
+1. Two-dimensional Keypad
+1. Teensy 3.1
+1. Ultrasonic Ranging Module HC - SR04 

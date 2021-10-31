@@ -88,107 +88,104 @@ void loop() {
     printOled();// bme280 info
   }
   else {}
-  //  if (distance >3){
-  //    hueinfo(); // will replace with actual hue status
-  //  }
-  //  else{
-  //  }
-
-  if (customKey == 0x31) {
-    setHue(1, true, HueBlue, 255, 0);
-    livingRoomOn();
+  if(customKey){
+    setHomeLighting();
   }
-  else {}
-
-  if (customKey == 0x32) {
-    setHue(1, false, HueBlue, 0, 0);
-    livingRoomOff();
-  }
-  else {}
-
-  if (customKey == 0x33) {
-    setHue(2, true, HueBlue, 255, 0);
-    bedroomOn();
-  }
-  else {}
-
-  if (customKey == 0x34) {
-    setHue(2, false, HueBlue, 0, 0);
-    bedroomOff();
-  }
-  else {}
-
-  if (customKey == 0x35) {
-    setHue(3, true, HueBlue, 255, 0);
-    bedroom_2_On();
-  }
-  else {}
-
-  if (customKey == 0x36) {
-    setHue(3, false, HueBlue, 0, 0);
-    bedroom_2_Off();
-  }
-  else {}
-
-  if (customKey == 0x37) {
-    setHue(4, true, HueBlue, 255, 0);
-    bedroom_3_On();
-  }
-  else {}
-
-  if (customKey == 0x38) {
-    setHue(4, false, HueBlue, 0, 0);
-    bedroom_3_Off();
-  }
-  else {}
-
-  if (customKey == 0x39) {
-    setHue(5, true, HueBlue, 255, 0);
-    kitchenOn();
-  }
-  else {}
-
-  if (customKey == 0x30) {
-    setHue(5, false, HueBlue, 0, 0);
-    kitchenOff();
-  }
-  else {}
-
-  if (customKey == 0x41) {
-    setHue(6, true, HueBlue, 255, 0);
-    hallwayOn();
-  }
-  else {}
-
-  if (customKey == 0x42) {
-    setHue(6, false, HueBlue, 0, 0);
-    hallwayOff();
-  }
-  else {}
-
-  if (customKey == 0x43) {
-    switchON(1);
-    airConditionerOn();
-  }
-  else {}
-
-  if (customKey == 0x44) {
-    switchOFF(1);
-    airConditionerOff();
-  }
-  else {}
-
-  if (customKey == 0x2A) {
-    switchON(2);
-    teaKettleOn();
-  }
-  else {}
-
-  if (customKey == 0x23) {
-    switchOFF(2);
-    teaKettleOff();
-  }
-  else {}
+  
+//  if (customKey == 0x31) {
+//    setHue(1, true, HueBlue, 255, 0);
+//    livingRoomOn();
+//  }
+//  else {}
+//
+//  if (customKey == 0x32) {
+//    
+//  }
+//  else {}
+//
+//  if (customKey == 0x33) {
+//    setHue(2, true, HueBlue, 255, 0);
+//    bedroomOn();
+//  }
+//  else {}
+//
+//  if (customKey == 0x34) {
+//    setHue(2, false, HueBlue, 0, 0);
+//    bedroomOff();
+//  }
+//  else {}
+//
+//  if (customKey == 0x35) {
+//    setHue(3, true, HueBlue, 255, 0);
+//    bedroom_2_On();
+//  }
+//  else {}
+//
+//  if (customKey == 0x36) {
+//    setHue(3, false, HueBlue, 0, 0);
+//    bedroom_2_Off();
+//  }
+//  else {}
+//
+//  if (customKey == 0x37) {
+//    setHue(4, true, HueBlue, 255, 0);
+//    bedroom_3_On();
+//  }
+//  else {}
+//
+//  if (customKey == 0x38) {
+//    setHue(4, false, HueBlue, 0, 0);
+//    bedroom_3_Off();
+//  }
+//  else {}
+//
+//  if (customKey == 0x39) {
+//    setHue(5, true, HueBlue, 255, 0);
+//    kitchenOn();
+//  }
+//  else {}
+//
+//  if (customKey == 0x30) {
+//    setHue(5, false, HueBlue, 0, 0);
+//    kitchenOff();
+//  }
+//  else {}
+//
+//  if (customKey == 0x41) {
+//    setHue(6, true, HueBlue, 255, 0);
+//    hallwayOn();
+//  }
+//  else {}
+//
+//  if (customKey == 0x42) {
+//    setHue(6, false, HueBlue, 0, 0);
+//    hallwayOff();
+//  }
+//  else {}
+//
+//  if (customKey == 0x43) {
+//    switchON(1);
+//    airConditionerOn();
+//  }
+//  else {}
+//
+//  if (customKey == 0x44) {
+//    switchOFF(1);
+//    airConditionerOff();
+//  }
+//  else {}
+//
+//  if (customKey == 0x2A) {
+//    switchON(2);
+//    teaKettleOn();
+//  }
+//  else {}
+//
+//  if (customKey == 0x23) {
+//    switchOFF(2);
+//    teaKettleOff();
+//  }
+//  else {}
 
 }
 void welcomeInfo(void) {
@@ -404,4 +401,72 @@ void printOled(void) {
   display.setRotation(rot);
   display.printf("Temperature %0.1fF \n Pressure %0.1finHg \n Humidity %0.1f \n", tempF, pressInhg, humidRH);
   display.display();
+}
+void setHomeLighting(void){
+  switch (customKey){
+    case 0x31:
+    setHue(1,true,HueBlue,255,0);
+    livingRoomOn();
+    break;
+    case 0x32:
+    setHue(1, false, HueBlue, 0, 0);
+    livingRoomOff();
+    break;
+    case 0x33:
+    setHue(2, true, HueBlue, 255, 0);
+    bedroomOn();
+    break;
+    case 0x34:
+    setHue(2, false, HueBlue, 0, 0);
+    bedroomOff();
+    break;
+    case 0x35:
+    setHue(3, true, HueBlue, 255, 0);
+    bedroom_2_On();
+    break;
+    case 0x36:
+    setHue(3, false, HueBlue, 0, 0);
+    bedroom_2_Off();
+    break;
+    case 0x37:
+    setHue(4, true, HueBlue, 255, 0);
+    bedroom_3_On();
+    break;
+    case 0x38:
+    setHue(4, false, HueBlue, 0, 0);
+    bedroom_3_Off();
+    break;
+    case 0x39:
+    setHue(5, true, HueBlue, 255, 0);
+    kitchenOn();
+    break;
+    case 0x30:
+    setHue(5, false, HueBlue, 0, 0);
+    kitchenOff();
+    break;
+    case 0x41:
+    setHue(6, true, HueBlue, 255, 0);
+    hallwayOn();
+    break;
+    case 0x42:
+    setHue(6, false, HueBlue, 0, 0);
+    hallwayOff();
+    break;
+    case 0x43:
+    switchON(1);
+    airConditionerOn();
+    break;
+    case 0x44:
+    switchOFF(1);
+    airConditionerOff();
+    break;
+    case 0x2A:
+    switchON(2);
+    teaKettleOn();
+    break;
+    case 0x23:
+    switchOFF(2);
+    teaKettleOff();
+    break; 
+  }
 }
